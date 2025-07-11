@@ -1,0 +1,53 @@
+import React, { useState } from "react";
+import "./Login.css";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../api/auth";
+
+function Login() {
+    const navigate = useNavigate();
+    const [user, setUser] = useState("");
+    const [pwd, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError("");
+        try {
+          const data = await loginUser(user, pwd);
+          navigate("/");
+        } catch (err) {
+          setError(err);
+        }
+      };
+
+  return (
+    <div id="a">
+        <form onSubmit={handleSubmit}>
+        <div>
+                <h1>Authentification</h1>
+            <label>Username:</label>
+            <input placeholder="Username" 
+            type="text"
+            value={user}
+            required
+            onChange={(e) => setUser(e.target.value)}
+            />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input placeholder="*******" 
+            type="password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            />
+        </div>
+        <br />
+            <button type="submit">Login</button>
+            <br />
+        </form>
+    </div>
+  );
+}
+
+export default Login;

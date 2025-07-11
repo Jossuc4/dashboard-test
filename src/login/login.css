@@ -1,0 +1,92 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#a {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    width: 350px;
+    text-align: center;
+    color: #000;
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 8px;
+    float: left;
+    color: #000;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #ccc;
+    transition: 0.3s ease-in-out;
+}
+
+input:focus {
+    background: rgb(219, 218, 218);
+    transform: scale(1.05);
+}
+
+
+h5 {
+    color: #4d26fa;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #4d26fa;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #4d26fa;
+    transform: scale(1.05);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
