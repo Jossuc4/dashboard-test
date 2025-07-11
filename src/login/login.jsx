@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/auth";
 
 function Login() {
+    const navigate = useNavigate();
     const [user, setUser] = useState("");
     const [pwd, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -12,7 +14,7 @@ function Login() {
         setError("");
         try {
           const data = await loginUser(user, pwd);
-          alert("vous êtes connecté...");
+          navigate("/home");
         } catch (err) {
           setError(err);
         }
