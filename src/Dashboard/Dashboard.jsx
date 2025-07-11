@@ -70,11 +70,11 @@ function Dashboard() {
           </tr>
         </thead>
         <tbody>
-          {paginatedData.map(b => (
+          {beneficiairesData.map(b => (
             <tr key={b.id}>
               <td>{b.id}</td>
-              <td>{b.name}</td>
-              <td>{b.status}</td>
+              <td>{b.Code_menage}</td>
+              <td>{b.Nom_CM}</td>
             </tr>
           ))}
         </tbody>
