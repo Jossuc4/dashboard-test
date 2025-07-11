@@ -1,0 +1,104 @@
+.dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .dashboard h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .recap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background: #e0f7fa;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #00796b;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .actions button {
+    padding: 10px 15px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .actions button:hover {
+    background-color: #004d40;
+  }
+  
+  .actions select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+    color: #000;
+  }
+  
+  table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: transparent;
+    color: #000;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+  
+  .pagination button {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    background-color: #e0f7fa;
+    border-color: #00acc1;
+    color: #00796b;
+  }
+  
+  .pagination button.active {
+    background-color: #00796b;
+    color: #fff;
+    border: 1px solid #004d40;
+    font-weight: bold;
+  }
+  
