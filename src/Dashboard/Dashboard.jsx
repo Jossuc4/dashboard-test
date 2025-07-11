@@ -17,8 +17,22 @@ function Dashboard() {
       setBeneficiairesData(res.data);
       setFilteredData(res.data);
     });
-    // Reset to first page on filter change
-  }, [filterStatus]);
+  }, []);
+
+
+  useEffect(() => {
+    if (filterStatus === 'Tous') {
+      setFilteredData(beneficiairesData);
+    } else {
+      const filtered = beneficiairesData.filter(b =>
+        filterStatus === 'Payé' ? b.payer === 1 : b.payer === 0
+      );
+      setFilteredData(filtered);
+    }
+  
+    setCurrentPage(1);
+  }, [filterStatus, beneficiairesData]);
+  
 
   const handleExport = (type) => {
     const exportData = beneficiairesData.filter(b =>
@@ -62,21 +76,25 @@ function Dashboard() {
       </div>
 
       <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Statut</th>
-          </tr>
-        </thead>
+      <thead>
+  <tr>
+    <th>ID</th>
+    <th>Code Ménage</th>
+    <th>Nom Chef Ménage</th>
+    <th>Statut</th>
+  </tr>
+</thead>
+
         <tbody>
-          {paginatedData.map(b => (
-            <tr key={b.id}>
-              <td>{b.id}</td>
-              <td>{b.Code_menage}</td>
-              <td>{b.Nom_CM}</td>
-            </tr>
-          ))}
+        {paginatedData.map(b => (
+  <tr key={b.id}>
+    <td>{b.id}</td>
+    <td>{b.Code_menage}</td>
+    <td>{b.Nom_CM}</td>
+    <td>{b.payer === 1 ? 'Payé' : 'Non payé'}</td>
+  </tr>
+))}
+
         </tbody>
       </table>
 
@@ -85,7 +103,7 @@ function Dashboard() {
     onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
     disabled={currentPage === 1}
   >
-    Précédent
+     &#9664; {/* ◀️ */}
   </button>
 
   {Array.from({ length: 3 }, (_, i) => {
@@ -112,7 +130,7 @@ function Dashboard() {
     onClick={() => setCurrentPage(prev => Math.min(prev + 1, pageCount))}
     disabled={currentPage === pageCount}
   >
-    Suivant
+    &#9654; {/* ▶️ */}
   </button>
 </div>
 
