@@ -1,4 +1,4 @@
-# Installation et ;ise en place 
+# Installation et mise en place 
 
 git clone https://github.com/Jossuc4/dashboard-test.git
 
