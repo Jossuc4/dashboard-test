@@ -13,12 +13,10 @@ function Dashboard() {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    axios.get("https://association-fanambina.site/api/beneficier/").then(res=>{
-      res.json()
-    }).then(data=>{
-      setBeneficiairesData(data)
-      setFilteredData(data)
-    })
+    axios.get("https://association-fanambina.site/api/beneficier/").then((res) => {
+      setBeneficiairesData(res.data);
+      setFilteredData(res.data);
+    });
     // Reset to first page on filter change
   }, [filterStatus]);
 
@@ -48,8 +46,8 @@ function Dashboard() {
       <h2>Dashboard</h2>
 
       <div className="recap">
-        <p><strong>Bénéficiaires à Payer:</strong> {beneficiairesData.filter(b => b.payed === 0).length}</p>
-        <p><strong>Bénéficiaires Payé:</strong> {beneficiairesData.filter(b => b.payed === 1).length}</p>
+        <p><strong>Bénéficiaires à Payer:</strong> {beneficiairesData.filter((b) => b.payer === 0).length}</p>
+        <p><strong>Bénéficiaires Payé:</strong> {beneficiairesData.filter((b) => b.payer === 1).length}</p>
       </div>
 
       <div className="actions">
