@@ -43,19 +43,26 @@ function Dashboard() {
   },[codeM])
 
   const handleExport = (type) => {
-    const exportData = beneficiairesData.filter(b =>
-      type === 'Presents' ? b.status === 'Payé' : b.status === 'Non payé'
-    );
+  const exportData = beneficiairesData.filter(b =>
+    type === 'Presents' ? b.payer === 1 : b.payer === 0
+  );
 
-    const csv = exportData.map(b => `${b.id},${b.name},${b.status}`).join('\n');
-    const blob = new Blob([`ID,Nom,Statut\n${csv}`], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `Beneficiaires_${type}.csv`;
-    a.click();
-  };
+  const header = 'ID,Code_menage,Nom\n';
+  const rows = exportData.map(b => `${b.id},${b.Code_menage},${b.Nom_CM}`).join('\n');
+  const csvContent = header + rows;
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `Beneficiaires_${type}.csv`;
+
+  a.click();
+
+  URL.revokeObjectURL(url);
+};
+
 
   const pageCount = Math.ceil(filteredData.length / itemsPerPage);
   const paginatedData = filteredData.slice(
@@ -66,6 +73,7 @@ function Dashboard() {
   const marquerPaye = (code_menage)=>{
     axios.post("https://association-fanambina.site/api/beneficier/")
   }
+
   return (
     <section className="dashboardPage">
     <Menu/>

@@ -18,8 +18,6 @@ function DetailBeneficiaire({ data, onClose, marqueCommePaye }) {
           <div><strong>CIN:</strong> {data.CIN_CM}</div>
           <div><strong>Commune:</strong> {data.Commune}</div>
           <div><strong>Fokontany:</strong> {data.Fokontany}</div>
-          <div><strong>Village:</strong> {data.Village}</div>
-          <div><strong>Zone:</strong> {data.Zone}</div>
           <div><strong>Taille ménage:</strong> {data.Taille_Menage}</div>
           <div><strong>Handicapés:</strong> {data.NBR_Personne_Handicape}</div>
           <div><strong>Montant:</strong> {data.Montant} Ar</div>
