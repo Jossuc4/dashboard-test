@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 import axios from 'axios';
 import Menu from '../components/Menu'
+import { Link } from 'react-router';
+import DetailBeneficiaire from '../detailbeneficiaire/DetailBeneficiaire';
 
 function Dashboard() {
   const [filterStatus, setFilterStatus] = useState('Tous');
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
   const [beneficiairesData,setBeneficiairesData] = useState([])
-
-
+  const [codeM,setCodeM]=useState(null)
+  const [benefById,setBenefById]=useState({})
 
   const itemsPerPage = 10;
 
@@ -34,6 +36,11 @@ function Dashboard() {
     setCurrentPage(1);
   }, [filterStatus, beneficiairesData]);
   
+  useEffect(()=>{
+    if(codeM!==null){
+      axios.get("https://association-fanambina.site/api/beneficier/"+codeM).then(res=>setBenefById(res.data))
+    }
+  },[codeM])
 
   const handleExport = (type) => {
     const exportData = beneficiairesData.filter(b =>
@@ -56,6 +63,9 @@ function Dashboard() {
     currentPage * itemsPerPage
   );
 
+  const marquerPaye = (code_menage)=>{
+    axios.post("https://association-fanambina.site/api/beneficier/")
+  }
   return (
     <section className="dashboardPage">
     <Menu/>
@@ -86,8 +96,8 @@ function Dashboard() {
         </thead>
 
         <tbody>
-          {paginatedData.map(b => (
-            <tr key={b.id}>
+          {paginatedData.map(b => (   
+            <tr key={b.id} onClick={()=>setCodeM(b.Code_menage)}>
               <td>{b.Code_menage}</td>
               <td>{b.Nom_CM}</td>
               <td>
@@ -137,8 +147,15 @@ function Dashboard() {
         </div>
 
         </div>
+        {(benefById!==null) && <DetailBeneficiaire data={benefById} onClose={()=>setBenefById('')}/>}
         </section>
   );
 }
 
+
+const ModalBenef = ({benef})=>{
+  return <>
+    <div>{benef.Nom_CM}</div>
+  </>
+}
 export default Dashboard;

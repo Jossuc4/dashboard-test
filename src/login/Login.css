@@ -21,7 +21,7 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     color: #000;
-    animation: fadeIn 1s ease-in-out;
+    /* animation: fadeIn 1s ease-in-out; */
 }
 
 
