@@ -1,0 +1,73 @@
+/* Structure générale de la sidebar */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background-color: #1f2937; /* gris foncé */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+}
+
+/* Titre principal */
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0 24px;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+/* Zone centrale avec les liens */
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 16px;
+  flex-grow: 1;
+}
+
+/* Chaque lien dans le menu */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #e5e7eb;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Effet au survol */
+.sidebar-link:hover {
+  background-color: #374151; /* gris plus clair */
+  color: #10b981; /* vert accent */
+  padding-left: 16px;
+}
+
+/* Section en bas */
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid #374151;
+}
+
+/* Lien de déconnexion stylisé */
+.logout-link {
+  color: #f87171;
+}
+
+.logout-link:hover {
+  background-color: #4b5563;
+  color: #fca5a5;
+  padding-left: 16px;
+  border-left: 4px solid #f87171;
+  border-radius: 0 4px 4px 0;
+}

@@ -14,6 +14,7 @@ function Login() {
         setError("");
         try {
           const data = await loginUser(user, pwd);
+          
           navigate("/home");
         } catch (err) {
           setError(err);
